@@ -8339,3 +8339,288 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 643ms (Views: 598.0ms | ActiveRecord: 17.2ms | Allocations: 110118)
 
 
+Started GET "/" for ::1 at 2021-08-02 16:30:45 +0200
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mGoatAd Load (3.8ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  ↳ app/views/pages/home.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (5.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (2.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  Rendered pages/home.html.erb within layouts/application (Duration: 362.2ms | Allocations: 47214)
+Completed 500 Internal Server Error in 499ms (ActiveRecord: 28.3ms | Allocations: 57209)
+
+
+  
+ActionView::Template::Error (Must supply cloud_name in tag or in configuration):
+    43:     <div class="card-img-top">
+    44:       <%= link_to goat_ad do %>
+    45:       <% goat_ad.medias.first(1).each do |media| %>
+    46:       <%= cl_image_tag media.key, height: 200, width: 200, crop: :fit%>
+    47:       <% end %>
+    48: 
+    49:       <% end %>
+  
+app/views/pages/home.html.erb:46
+app/views/pages/home.html.erb:45:in `each'
+app/views/pages/home.html.erb:45
+app/views/pages/home.html.erb:44
+app/views/pages/home.html.erb:38
+Started GET "/" for ::1 at 2021-08-02 16:40:28 +0200
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mGoatAd Load (3.3ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  ↳ app/views/pages/home.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (4.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (3.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  Rendered pages/home.html.erb within layouts/application (Duration: 252.4ms | Allocations: 44533)
+  Rendered shared/_navbar.html.erb (Duration: 4.1ms | Allocations: 688)
+  Rendered shared/_flashes.html.erb (Duration: 1.9ms | Allocations: 184)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 1.9ms | Allocations: 100)
+Completed 200 OK in 787ms (Views: 687.7ms | ActiveRecord: 35.9ms | Allocations: 102092)
+
+
+Started GET "/goat_ads?feature=fighter" for ::1 at 2021-08-02 16:40:36 +0200
+Processing by GoatAdsController#index as HTML
+  Parameters: {"feature"=>"fighter"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 410)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-08-02 16:40:36 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 4.6ms | Allocations: 612)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 379.1ms | Allocations: 23192)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 28)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 417ms (Views: 397.6ms | ActiveRecord: 2.0ms | Allocations: 44370)
+
+
+Started GET "/goat_ads?feature=fighter" for ::1 at 2021-08-02 21:59:20 +0200
+Processing by GoatAdsController#index as HTML
+  Parameters: {"feature"=>"fighter"}
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms | Allocations: 366)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-08-02 21:59:20 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.4ms | Allocations: 520)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 23.1ms | Allocations: 8803)
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 606)
+  Rendered shared/_flashes.html.erb (Duration: 1.7ms | Allocations: 181)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 1.0ms | Allocations: 98)
+Completed 200 OK in 89ms (Views: 86.8ms | ActiveRecord: 0.0ms | Allocations: 24057)
+
+
+Started POST "/users/sign_in" for ::1 at 2021-08-02 21:59:27 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"sr/oWpNCpxfmPZCgN0mNEcrPBrQJ9Ue1odPCr6kpquVHIeXiNEUu6k2dGQIL3WsgGoDf+2ftMJyL2X/VBBQGyA==", "user"=>{"email"=>"polettistephane@msn.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (11.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "polettistephane@msn.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/goat_ads?feature=fighter
+Completed 302 Found in 340ms (ActiveRecord: 11.8ms | Allocations: 6245)
+
+
+Started GET "/goat_ads?feature=fighter" for ::1 at 2021-08-02 21:59:27 +0200
+Processing by GoatAdsController#index as HTML
+  Parameters: {"feature"=>"fighter"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Load (2.0ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads" WHERE "goat_ads"."features" = $1 AND (goat_ads.latitude IS NOT NULL AND goat_ads.longitude IS NOT NULL)[0m  [["features", "fighter"]]
+  ↳ app/controllers/goat_ads_controller.rb:12:in `map'
+  Rendering goat_ads/index.html.erb within layouts/application
+  [1m[36mGoatAd Load (0.2ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads" WHERE "goat_ads"."features" = $1[0m  [["features", "fighter"]]
+  ↳ app/views/goat_ads/index.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/index.html.erb:14
+  [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/index.html.erb:15
+  Rendered goat_ads/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 3373)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 397)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 42ms (Views: 32.6ms | ActiveRecord: 5.3ms | Allocations: 19101)
+
+
+Started GET "/" for ::1 at 2021-08-02 21:59:39 +0200
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mGoatAd Load (0.4ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  ↳ app/views/pages/home.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  Rendered pages/home.html.erb within layouts/application (Duration: 29.6ms | Allocations: 12829)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 27.3ms | Allocations: 1347)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 23)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 80ms (Views: 74.0ms | ActiveRecord: 3.6ms | Allocations: 27080)
+
+
+Started GET "/goat_ads/1" for ::1 at 2021-08-02 22:00:32 +0200
+Processing by GoatAdsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Load (1.4ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads" WHERE "goat_ads"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goat_ads_controller.rb:21:in `show'
+  Rendering goat_ads/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  ↳ app/views/goat_ads/show.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  Rendered goat_ads/show.html.erb within layouts/application (Duration: 20.7ms | Allocations: 10432)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 389)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 23)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 134ms (Views: 37.5ms | ActiveRecord: 36.4ms | Allocations: 33305)
+
+
+Started POST "/goat_ads/1/bookings" for ::1 at 2021-08-02 22:00:40 +0200
+Processing by BookingsController#create as HTML
+  Parameters: {"authenticity_token"=>"1wc4CiG72z7Jlq5Uqv/S+B71WsqeB8H8MFiU9og4z903kku59A88SaTDfWYgb3gZigzbYbPNBnRlqwidK+utQg==", "booking"=>{"start_time"=>"", "end_time"=>""}, "commit"=>"Book now", "goat_ad_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Load (0.3ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads" WHERE "goat_ads"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:25:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:30:in `block in create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:30:in `block in create'
+  [1m[36mBooking Create (17.3ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "user_id", "goat_ad_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2021-08-02 20:00:40.922211"], ["updated_at", "2021-08-02 20:00:40.922211"], ["user_id", 1], ["goat_ad_id", 1]]
+  ↳ app/controllers/bookings_controller.rb:30:in `block in create'
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/bookings/1
+Completed 302 Found in 35ms (ActiveRecord: 20.8ms | Allocations: 7774)
+
+
+Started GET "/bookings/1" for ::1 at 2021-08-02 22:00:40 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:66:in `set_booking'
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 284)
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 389)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 16)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 32ms (Views: 26.6ms | ActiveRecord: 0.6ms | Allocations: 15769)
+
+
+Started GET "/goat_ads/1" for ::1 at 2021-08-02 22:00:44 +0200
+Processing by GoatAdsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Load (0.4ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads" WHERE "goat_ads"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goat_ads_controller.rb:21:in `show'
+  Rendering goat_ads/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  ↳ app/views/goat_ads/show.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/goat_ads/show.html.erb:11
+  Rendered goat_ads/show.html.erb within layouts/application (Duration: 23.4ms | Allocations: 9775)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 389)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 23)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 57ms (Views: 44.8ms | ActiveRecord: 3.7ms | Allocations: 24326)
+
+
+Started GET "/" for ::1 at 2021-08-02 22:00:55 +0200
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mGoatAd Load (0.6ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  ↳ app/views/pages/home.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  Rendered pages/home.html.erb within layouts/application (Duration: 49.7ms | Allocations: 12414)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.0ms | Allocations: 1346)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 23)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 84ms (Views: 78.8ms | ActiveRecord: 3.9ms | Allocations: 25900)
+
+
