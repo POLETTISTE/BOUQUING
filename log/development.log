@@ -8624,3 +8624,138 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 84ms (Views: 78.8ms | ActiveRecord: 3.9ms | Allocations: 25900)
 
 
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (64.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_development"[0m
+  [1m[35m (49.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_test"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_development"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_test"[0m
+  [1m[35m (259.3ms)[0m  [1m[35mCREATE DATABASE "BoucIng_development" ENCODING = 'unicode'[0m
+  [1m[35m (126.0ms)[0m  [1m[35mCREATE DATABASE "BoucIng_test" ENCODING = 'unicode'[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1081237755834873210)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGoatAds (20210601092048)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "goat_ads" ("id" bigserial primary key, "name" character varying, "age" integer, "address" character varying, "latitude" character varying, "longitude" character varying, "description" text, "price_per_day" integer, "features" character varying, "medias" character varying, "start_available" date, "end_available" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601092048"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20210601150839)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601150839"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20210601152138)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152138"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFirstNameToUsers (20210601152726)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152726"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddLastNameToUsers (20210601152803)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152803"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20210603100503)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "name" character varying, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603100503"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddChangeToBooking (20210603123127)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "bookings" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_user_id" ON "bookings"  ("user_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123127"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddGoatToBooking (20210603123303)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "bookings" ADD "goat_ad_id" bigint NOT NULL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_goat_ad_id" ON "bookings"  ("goat_ad_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_804cb30102"
+FOREIGN KEY ("goat_ad_id")
+  REFERENCES "goat_ads" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123303"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToGoatAd (20210603152521)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_goat_ads_on_user_id" ON "goat_ads"  ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD CONSTRAINT "fk_rails_ddb10c9335"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603152521"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-08-02 21:29:52.281272"], ["updated_at", "2021-08-02 21:29:52.281272"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1081237755834873210)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGoatAd Load (0.7ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "clemcheyrou@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "clemcheyrou@gmail.com"], ["encrypted_password", "$2a$12$jejnNcwZp51LdSQhvTA7nOe7vrCNUVICAYvWwuAwZNeIjFu4W5Uc."], ["created_at", "2021-08-02 21:29:52.650573"], ["updated_at", "2021-08-02 21:29:52.650573"], ["first_name", "Clémentine"], ["last_name", "Cheyrou"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (1.7ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Louloute"], ["age", 6], ["address", "sci la bergerie, 685 Chemin du Mont Robert, 13290 Aix-en-Provence"], ["latitude", "43.492487"], ["longitude", "5.393259"], ["description", "Nice goat from Aix-en-Provence, has a nice behaviour with humans and can play with kids !"], ["price_per_day", 299], ["features", "sociable"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:29:52.912997"], ["updated_at", "2021-08-02 21:29:52.912997"], ["user_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.6ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Elianemeusk"], ["age", 8], ["address", "la ferme d'Agnis, 83870 Signes"], ["latitude", "43.317312"], ["longitude", "5.895125"], ["description", "4 times captain of the year, pilot in chief of spaceship IX, mother of 21 kids"], ["price_per_day", 300], ["features", "space-traveller"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:29:53.370462"], ["updated_at", "2021-08-02 21:29:53.370462"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (1.0ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "John Seguin"], ["age", 11], ["address", "Ferme les Seguins, 04210 Valensole"], ["latitude", "43.865006"], ["longitude", "5.9542464"], ["description", "genuine fighter since 5 generations, golden Medal in Olympics Games in Bejin"], ["price_per_day", 400], ["features", "fighter"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:29:53.957697"], ["updated_at", "2021-08-02 21:29:53.957697"], ["user_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Candia"], ["age", 4], ["address", "Ferme Canteperdrix, 263 chemin de, 83390 Puget-ville"], ["latitude", "43.268315"], ["longitude", "6.098027"], ["description", "Candia can deliver you 235 liters of milk every morning except sunday day off for her, can be useful for large families"], ["price_per_day", 120], ["features", "milker"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:29:54.468266"], ["updated_at", "2021-08-02 21:29:54.468266"], ["user_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Gardenoo"], ["age", 4], ["address", "La chèvrerie du bois d'Amon, 1307 Chemin Départemental 13 Route de Grasse, 06530 Saint-Cézaire-sur-Siagne"], ["latitude", "43.653732"], ["longitude", "6.818203"], ["description", "operationnal for mowing 200 a/day, she can refresh all gardens. She doesn't eat flowers, only weeds ! Then your grass will be great !"], ["price_per_day", 130], ["features", "mower"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:29:54.978738"], ["updated_at", "2021-08-02 21:29:54.978738"], ["user_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveStorage::Blob Load (2.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "toia3sxqdrvna5ovg8dyew8rcl8t"], ["filename", "sociable10.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 20930], ["checksum", "/IooMzWRfgWYH8+iGUeraA=="], ["created_at", "2021-08-02 21:29:55.195229"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 1], ["created_at", "2021-08-02 21:29:55.198187"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:29:55.200095"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (920.9ms) [0m[32mUploaded file to key: toia3sxqdrvna5ovg8dyew8rcl8t (checksum: /IooMzWRfgWYH8+iGUeraA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9dea1023-f363-43ef-9c31-208f1043bc31] Performing ActiveStorage::AnalyzeJob (Job ID: 9dea1023-f363-43ef-9c31-208f1043bc31) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:29:56Z with arguments: #<GlobalID:0x00007fcedd3f2bf0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9dea1023-f363-43ef-9c31-208f1043bc31] [36m  Cloudinary Storage (494.4ms) [0m[34mDownloaded file from key: toia3sxqdrvna5ovg8dyew8rcl8t[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9dea1023-f363-43ef-9c31-208f1043bc31] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9dea1023-f363-43ef-9c31-208f1043bc31]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9dea1023-f363-43ef-9c31-208f1043bc31]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9dea1023-f363-43ef-9c31-208f1043bc31]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9dea1023-f363-43ef-9c31-208f1043bc31] Performed ActiveStorage::AnalyzeJob (Job ID: 9dea1023-f363-43ef-9c31-208f1043bc31) from Inline(active_storage_analysis) in 536.96ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 9dea1023-f363-43ef-9c31-208f1043bc31) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fcedd40a4d0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
