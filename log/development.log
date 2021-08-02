@@ -9315,3 +9315,889 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 570ms (Views: 528.8ms | ActiveRecord: 15.8ms | Allocations: 113146)
 
 
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (44.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_development"[0m
+  [1m[35m (41.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_test"[0m
+  [1m[35m (159.0ms)[0m  [1m[35mCREATE DATABASE "BoucIng_development" ENCODING = 'unicode'[0m
+  [1m[35m (137.3ms)[0m  [1m[35mCREATE DATABASE "BoucIng_test" ENCODING = 'unicode'[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1081237755834873210)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGoatAds (20210601092048)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "goat_ads" ("id" bigserial primary key, "name" character varying, "age" integer, "address" character varying, "latitude" character varying, "longitude" character varying, "description" text, "price_per_day" integer, "features" character varying, "medias" character varying, "start_available" date, "end_available" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601092048"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20210601150839)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601150839"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20210601152138)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152138"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFirstNameToUsers (20210601152726)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152726"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddLastNameToUsers (20210601152803)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152803"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20210603100503)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "name" character varying, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603100503"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddChangeToBooking (20210603123127)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_user_id" ON "bookings"  ("user_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123127"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddGoatToBooking (20210603123303)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD "goat_ad_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_goat_ad_id" ON "bookings"  ("goat_ad_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_804cb30102"
+FOREIGN KEY ("goat_ad_id")
+  REFERENCES "goat_ads" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123303"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToGoatAd (20210603152521)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_goat_ads_on_user_id" ON "goat_ads"  ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD CONSTRAINT "fk_rails_ddb10c9335"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603152521"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-08-02 21:37:52.797476"], ["updated_at", "2021-08-02 21:37:52.797476"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1081237755834873210)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGoatAd Load (0.6ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "clemcheyrou@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "clemcheyrou@gmail.com"], ["encrypted_password", "$2a$12$Z4aKzKSl3iQ/C/WHzCu1IOss2RKZ./eFPMT./rrBRULS2c3S1aX4S"], ["created_at", "2021-08-02 21:37:53.137868"], ["updated_at", "2021-08-02 21:37:53.137868"], ["first_name", "Clémentine"], ["last_name", "Cheyrou"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.8ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Louloute"], ["age", 6], ["address", "sci la bergerie, 685 Chemin du Mont Robert, 13290 Aix-en-Provence"], ["latitude", "43.492487"], ["longitude", "5.393259"], ["description", "Nice goat from Aix-en-Provence, has a nice behaviour with humans and can play with kids !"], ["price_per_day", 299], ["features", "sociable"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:37:53.339990"], ["updated_at", "2021-08-02 21:37:53.339990"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.4ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Elianemeusk"], ["age", 8], ["address", "la ferme d'Agnis, 83870 Signes"], ["latitude", "43.317312"], ["longitude", "5.895125"], ["description", "4 times captain of the year, pilot in chief of spaceship IX, mother of 21 kids"], ["price_per_day", 300], ["features", "space-traveller"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:37:53.806008"], ["updated_at", "2021-08-02 21:37:53.806008"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.4ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "John Seguin"], ["age", 11], ["address", "Ferme les Seguins, 04210 Valensole"], ["latitude", "43.865006"], ["longitude", "5.9542464"], ["description", "genuine fighter since 5 generations, golden Medal in Olympics Games in Bejin"], ["price_per_day", 400], ["features", "fighter"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:37:54.305002"], ["updated_at", "2021-08-02 21:37:54.305002"], ["user_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Candia"], ["age", 4], ["address", "Ferme Canteperdrix, 263 chemin de, 83390 Puget-ville"], ["latitude", "43.268315"], ["longitude", "6.098027"], ["description", "Candia can deliver you 235 liters of milk every morning except sunday day off for her, can be useful for large families"], ["price_per_day", 120], ["features", "milker"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:37:54.844777"], ["updated_at", "2021-08-02 21:37:54.844777"], ["user_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Gardenoo"], ["age", 4], ["address", "La chèvrerie du bois d'Amon, 1307 Chemin Départemental 13 Route de Grasse, 06530 Saint-Cézaire-sur-Siagne"], ["latitude", "43.653732"], ["longitude", "6.818203"], ["description", "operationnal for mowing 200 a/day, she can refresh all gardens. She doesn't eat flowers, only weeds ! Then your grass will be great !"], ["price_per_day", 130], ["features", "mower"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:37:55.341173"], ["updated_at", "2021-08-02 21:37:55.341173"], ["user_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "9zr8nrlyldeda29xm1sxs89g8wgc"], ["filename", "sociable10.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 20930], ["checksum", "/IooMzWRfgWYH8+iGUeraA=="], ["created_at", "2021-08-02 21:37:55.397348"]]
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 1], ["created_at", "2021-08-02 21:37:55.400593"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:37:55.402847"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (991.7ms) [0m[32mUploaded file to key: 9zr8nrlyldeda29xm1sxs89g8wgc (checksum: /IooMzWRfgWYH8+iGUeraA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [611c6169-e94b-4bb3-a23e-6ca06ea82b9b] Performing ActiveStorage::AnalyzeJob (Job ID: 611c6169-e94b-4bb3-a23e-6ca06ea82b9b) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:37:56Z with arguments: #<GlobalID:0x00007fe0585803f0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [611c6169-e94b-4bb3-a23e-6ca06ea82b9b] [36m  Cloudinary Storage (432.0ms) [0m[34mDownloaded file from key: 9zr8nrlyldeda29xm1sxs89g8wgc[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [611c6169-e94b-4bb3-a23e-6ca06ea82b9b] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [611c6169-e94b-4bb3-a23e-6ca06ea82b9b]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [611c6169-e94b-4bb3-a23e-6ca06ea82b9b]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [611c6169-e94b-4bb3-a23e-6ca06ea82b9b]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [611c6169-e94b-4bb3-a23e-6ca06ea82b9b] Performed ActiveStorage::AnalyzeJob (Job ID: 611c6169-e94b-4bb3-a23e-6ca06ea82b9b) from Inline(active_storage_analysis) in 459.24ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 611c6169-e94b-4bb3-a23e-6ca06ea82b9b) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fe05f00efc8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (44.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_development"[0m
+  [1m[35m (38.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_test"[0m
+  [1m[35m (131.4ms)[0m  [1m[35mCREATE DATABASE "BoucIng_development" ENCODING = 'unicode'[0m
+  [1m[35m (130.9ms)[0m  [1m[35mCREATE DATABASE "BoucIng_test" ENCODING = 'unicode'[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1081237755834873210)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGoatAds (20210601092048)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "goat_ads" ("id" bigserial primary key, "name" character varying, "age" integer, "address" character varying, "latitude" character varying, "longitude" character varying, "description" text, "price_per_day" integer, "features" character varying, "medias" character varying, "start_available" date, "end_available" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601092048"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20210601150839)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601150839"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20210601152138)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152138"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFirstNameToUsers (20210601152726)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152726"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddLastNameToUsers (20210601152803)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152803"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20210603100503)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "name" character varying, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603100503"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddChangeToBooking (20210603123127)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_user_id" ON "bookings"  ("user_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123127"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddGoatToBooking (20210603123303)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD "goat_ad_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_goat_ad_id" ON "bookings"  ("goat_ad_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_804cb30102"
+FOREIGN KEY ("goat_ad_id")
+  REFERENCES "goat_ads" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123303"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToGoatAd (20210603152521)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_goat_ads_on_user_id" ON "goat_ads"  ("user_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD CONSTRAINT "fk_rails_ddb10c9335"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603152521"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-08-02 21:38:11.367282"], ["updated_at", "2021-08-02 21:38:11.367282"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1081237755834873210)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGoatAd Load (0.7ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "clemcheyrou@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "clemcheyrou@gmail.com"], ["encrypted_password", "$2a$12$j/atz5Ignf87.4IaGEYVtOhP3Q2qdVpid.8CLptqPs0aEv4iI/M4q"], ["created_at", "2021-08-02 21:38:11.694158"], ["updated_at", "2021-08-02 21:38:11.694158"], ["first_name", "Clémentine"], ["last_name", "Cheyrou"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (1.7ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Louloute"], ["age", 6], ["address", "sci la bergerie, 685 Chemin du Mont Robert, 13290 Aix-en-Provence"], ["latitude", "43.492487"], ["longitude", "5.393259"], ["description", "Nice goat from Aix-en-Provence, has a nice behaviour with humans and can play with kids !"], ["price_per_day", 299], ["features", "sociable"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:38:11.875991"], ["updated_at", "2021-08-02 21:38:11.875991"], ["user_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Elianemeusk"], ["age", 8], ["address", "la ferme d'Agnis, 83870 Signes"], ["latitude", "43.317312"], ["longitude", "5.895125"], ["description", "4 times captain of the year, pilot in chief of spaceship IX, mother of 21 kids"], ["price_per_day", 300], ["features", "space-traveller"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:38:12.356474"], ["updated_at", "2021-08-02 21:38:12.356474"], ["user_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (1.0ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "John Seguin"], ["age", 11], ["address", "Ferme les Seguins, 04210 Valensole"], ["latitude", "43.865006"], ["longitude", "5.9542464"], ["description", "genuine fighter since 5 generations, golden Medal in Olympics Games in Bejin"], ["price_per_day", 400], ["features", "fighter"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:38:12.868707"], ["updated_at", "2021-08-02 21:38:12.868707"], ["user_id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Candia"], ["age", 4], ["address", "Ferme Canteperdrix, 263 chemin de, 83390 Puget-ville"], ["latitude", "43.268315"], ["longitude", "6.098027"], ["description", "Candia can deliver you 235 liters of milk every morning except sunday day off for her, can be useful for large families"], ["price_per_day", 120], ["features", "milker"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:38:13.483391"], ["updated_at", "2021-08-02 21:38:13.483391"], ["user_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Gardenoo"], ["age", 4], ["address", "La chèvrerie du bois d'Amon, 1307 Chemin Départemental 13 Route de Grasse, 06530 Saint-Cézaire-sur-Siagne"], ["latitude", "43.653732"], ["longitude", "6.818203"], ["description", "operationnal for mowing 200 a/day, she can refresh all gardens. She doesn't eat flowers, only weeds ! Then your grass will be great !"], ["price_per_day", 130], ["features", "mower"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:38:13.893784"], ["updated_at", "2021-08-02 21:38:13.893784"], ["user_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "ekr3q2mzvvhcabnmvf8mbosoml1u"], ["filename", "sociable10.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 20930], ["checksum", "/IooMzWRfgWYH8+iGUeraA=="], ["created_at", "2021-08-02 21:38:13.971149"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 1], ["created_at", "2021-08-02 21:38:13.974516"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:38:13.976335"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1603.8ms) [0m[32mUploaded file to key: ekr3q2mzvvhcabnmvf8mbosoml1u (checksum: /IooMzWRfgWYH8+iGUeraA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [409c8006-4499-423e-9f7b-0356a4508708] Performing ActiveStorage::AnalyzeJob (Job ID: 409c8006-4499-423e-9f7b-0356a4508708) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:38:15Z with arguments: #<GlobalID:0x00007f911e88b060 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [409c8006-4499-423e-9f7b-0356a4508708] [36m  Cloudinary Storage (329.2ms) [0m[34mDownloaded file from key: ekr3q2mzvvhcabnmvf8mbosoml1u[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [409c8006-4499-423e-9f7b-0356a4508708] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [409c8006-4499-423e-9f7b-0356a4508708]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [409c8006-4499-423e-9f7b-0356a4508708]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [409c8006-4499-423e-9f7b-0356a4508708]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [409c8006-4499-423e-9f7b-0356a4508708] Performed ActiveStorage::AnalyzeJob (Job ID: 409c8006-4499-423e-9f7b-0356a4508708) from Inline(active_storage_analysis) in 350.11ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 409c8006-4499-423e-9f7b-0356a4508708) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007f91146233b8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (45.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_development"[0m
+  [1m[35m (40.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BoucIng_test"[0m
+  [1m[35m (119.5ms)[0m  [1m[35mCREATE DATABASE "BoucIng_development" ENCODING = 'unicode'[0m
+  [1m[35m (135.4ms)[0m  [1m[35mCREATE DATABASE "BoucIng_test" ENCODING = 'unicode'[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1081237755834873210)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGoatAds (20210601092048)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "goat_ads" ("id" bigserial primary key, "name" character varying, "age" integer, "address" character varying, "latitude" character varying, "longitude" character varying, "description" text, "price_per_day" integer, "features" character varying, "medias" character varying, "start_available" date, "end_available" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601092048"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20210601150839)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601150839"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20210601152138)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152138"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFirstNameToUsers (20210601152726)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152726"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddLastNameToUsers (20210601152803)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210601152803"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20210603100503)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "name" character varying, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603100503"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddChangeToBooking (20210603123127)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_user_id" ON "bookings"  ("user_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123127"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddGoatToBooking (20210603123303)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD "goat_ad_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_bookings_on_goat_ad_id" ON "bookings"  ("goat_ad_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "bookings" ADD CONSTRAINT "fk_rails_804cb30102"
+FOREIGN KEY ("goat_ad_id")
+  REFERENCES "goat_ads" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603123303"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToGoatAd (20210603152521)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_goat_ads_on_user_id" ON "goat_ads"  ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "goat_ads" ADD CONSTRAINT "fk_rails_ddb10c9335"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210603152521"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-08-02 21:38:53.069529"], ["updated_at", "2021-08-02 21:38:53.069529"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1081237755834873210)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGoatAd Load (0.8ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "clemcheyrou@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "clemcheyrou@gmail.com"], ["encrypted_password", "$2a$12$bh7I3MmMJjbaEIpLPvXDqui..aHgg8UyP/FkY2l/6NFXawap1G56O"], ["created_at", "2021-08-02 21:39:05.775808"], ["updated_at", "2021-08-02 21:39:05.775808"], ["first_name", "Clémentine"], ["last_name", "Cheyrou"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (1.7ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Louloute"], ["age", 6], ["address", "sci la bergerie, 685 Chemin du Mont Robert, 13290 Aix-en-Provence"], ["latitude", "43.492487"], ["longitude", "5.393259"], ["description", "Nice goat from Aix-en-Provence, has a nice behaviour with humans and can play with kids !"], ["price_per_day", 299], ["features", "sociable"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:39:05.960945"], ["updated_at", "2021-08-02 21:39:05.960945"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Elianemeusk"], ["age", 8], ["address", "la ferme d'Agnis, 83870 Signes"], ["latitude", "43.317312"], ["longitude", "5.895125"], ["description", "4 times captain of the year, pilot in chief of spaceship IX, mother of 21 kids"], ["price_per_day", 300], ["features", "space-traveller"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:39:06.424721"], ["updated_at", "2021-08-02 21:39:06.424721"], ["user_id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "John Seguin"], ["age", 11], ["address", "Ferme les Seguins, 04210 Valensole"], ["latitude", "43.865006"], ["longitude", "5.9542464"], ["description", "genuine fighter since 5 generations, golden Medal in Olympics Games in Bejin"], ["price_per_day", 400], ["features", "fighter"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:39:07.037896"], ["updated_at", "2021-08-02 21:39:07.037896"], ["user_id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (1.0ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Candia"], ["age", 4], ["address", "Ferme Canteperdrix, 263 chemin de, 83390 Puget-ville"], ["latitude", "43.268315"], ["longitude", "6.098027"], ["description", "Candia can deliver you 235 liters of milk every morning except sunday day off for her, can be useful for large families"], ["price_per_day", 120], ["features", "milker"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:39:07.550230"], ["updated_at", "2021-08-02 21:39:07.550230"], ["user_id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoatAd Create (0.9ms)[0m  [1m[32mINSERT INTO "goat_ads" ("name", "age", "address", "latitude", "longitude", "description", "price_per_day", "features", "start_available", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Gardenoo"], ["age", 4], ["address", "La chèvrerie du bois d'Amon, 1307 Chemin Départemental 13 Route de Grasse, 06530 Saint-Cézaire-sur-Siagne"], ["latitude", "43.653732"], ["longitude", "6.818203"], ["description", "operationnal for mowing 200 a/day, she can refresh all gardens. She doesn't eat flowers, only weeds ! Then your grass will be great !"], ["price_per_day", 130], ["features", "mower"], ["start_available", "2021-03-07"], ["created_at", "2021-08-02 21:39:08.061766"], ["updated_at", "2021-08-02 21:39:08.061766"], ["user_id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveStorage::Blob Load (1.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "b6z3df7o1krqvpzeibnbz24y42lz"], ["filename", "sociable10.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 20930], ["checksum", "/IooMzWRfgWYH8+iGUeraA=="], ["created_at", "2021-08-02 21:39:08.146169"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 1], ["created_at", "2021-08-02 21:39:08.149459"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:08.151371"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1036.3ms) [0m[32mUploaded file to key: b6z3df7o1krqvpzeibnbz24y42lz (checksum: /IooMzWRfgWYH8+iGUeraA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0473e56a-0abc-4bea-8681-209e16c627b6] Performing ActiveStorage::AnalyzeJob (Job ID: 0473e56a-0abc-4bea-8681-209e16c627b6) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:09Z with arguments: #<GlobalID:0x00007fd87162b230 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0473e56a-0abc-4bea-8681-209e16c627b6] [36m  Cloudinary Storage (332.2ms) [0m[34mDownloaded file from key: b6z3df7o1krqvpzeibnbz24y42lz[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0473e56a-0abc-4bea-8681-209e16c627b6] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0473e56a-0abc-4bea-8681-209e16c627b6]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0473e56a-0abc-4bea-8681-209e16c627b6]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0473e56a-0abc-4bea-8681-209e16c627b6]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0473e56a-0abc-4bea-8681-209e16c627b6] Performed ActiveStorage::AnalyzeJob (Job ID: 0473e56a-0abc-4bea-8681-209e16c627b6) from Inline(active_storage_analysis) in 353.03ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0473e56a-0abc-4bea-8681-209e16c627b6) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8756b19a8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "094j8ycqz0c8g7eoai7fuh5t8t3o"], ["filename", "sociable11.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 998940], ["checksum", "LwZDK32o80giveut9bMgdw=="], ["created_at", "2021-08-02 21:39:09.623462"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 2], ["created_at", "2021-08-02 21:39:09.628121"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:09.629789"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1674.8ms) [0m[32mUploaded file to key: 094j8ycqz0c8g7eoai7fuh5t8t3o (checksum: LwZDK32o80giveut9bMgdw==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3a677f68-a6e1-4c23-8c7e-03356169fc9f] Performing ActiveStorage::AnalyzeJob (Job ID: 3a677f68-a6e1-4c23-8c7e-03356169fc9f) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:11Z with arguments: #<GlobalID:0x00007fd871b58a28 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3a677f68-a6e1-4c23-8c7e-03356169fc9f] [36m  Cloudinary Storage (1101.2ms) [0m[34mDownloaded file from key: 094j8ycqz0c8g7eoai7fuh5t8t3o[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3a677f68-a6e1-4c23-8c7e-03356169fc9f] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3a677f68-a6e1-4c23-8c7e-03356169fc9f]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3a677f68-a6e1-4c23-8c7e-03356169fc9f]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3a677f68-a6e1-4c23-8c7e-03356169fc9f]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3a677f68-a6e1-4c23-8c7e-03356169fc9f] Performed ActiveStorage::AnalyzeJob (Job ID: 3a677f68-a6e1-4c23-8c7e-03356169fc9f) from Inline(active_storage_analysis) in 1119.37ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3a677f68-a6e1-4c23-8c7e-03356169fc9f) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd87573bae0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/2>>
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "etzctkc9is7grcnhrpvg9fenb9n8"], ["filename", "sociable12.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 6848], ["checksum", "baC4lGc/ULN4XOMtt0Wf/Q=="], ["created_at", "2021-08-02 21:39:12.442294"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 3], ["created_at", "2021-08-02 21:39:12.446730"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:12.448224"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1039.8ms) [0m[32mUploaded file to key: etzctkc9is7grcnhrpvg9fenb9n8 (checksum: baC4lGc/ULN4XOMtt0Wf/Q==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b66e3be-0cd5-4321-8021-6df187eac428] Performing ActiveStorage::AnalyzeJob (Job ID: 4b66e3be-0cd5-4321-8021-6df187eac428) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:13Z with arguments: #<GlobalID:0x00007fd87c8578f0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b66e3be-0cd5-4321-8021-6df187eac428] [36m  Cloudinary Storage (605.7ms) [0m[34mDownloaded file from key: etzctkc9is7grcnhrpvg9fenb9n8[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b66e3be-0cd5-4321-8021-6df187eac428] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b66e3be-0cd5-4321-8021-6df187eac428]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b66e3be-0cd5-4321-8021-6df187eac428]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b66e3be-0cd5-4321-8021-6df187eac428]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b66e3be-0cd5-4321-8021-6df187eac428] Performed ActiveStorage::AnalyzeJob (Job ID: 4b66e3be-0cd5-4321-8021-6df187eac428) from Inline(active_storage_analysis) in 656.72ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 4b66e3be-0cd5-4321-8021-6df187eac428) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8754cdb00 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/3>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "2u2yb1ejqkil0t0ffgqx1ekfxbfd"], ["filename", "sociable13.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 24242], ["checksum", "doqmAxbWVK2UjsXnSUkUaA=="], ["created_at", "2021-08-02 21:39:14.158819"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 4], ["created_at", "2021-08-02 21:39:14.162946"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:14.164445"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (962.9ms) [0m[32mUploaded file to key: 2u2yb1ejqkil0t0ffgqx1ekfxbfd (checksum: doqmAxbWVK2UjsXnSUkUaA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a9f159d6-f6e1-48e8-ac32-ab94516c830b] Performing ActiveStorage::AnalyzeJob (Job ID: a9f159d6-f6e1-48e8-ac32-ab94516c830b) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:15Z with arguments: #<GlobalID:0x00007fd8715d37d8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a9f159d6-f6e1-48e8-ac32-ab94516c830b] [36m  Cloudinary Storage (404.9ms) [0m[34mDownloaded file from key: 2u2yb1ejqkil0t0ffgqx1ekfxbfd[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a9f159d6-f6e1-48e8-ac32-ab94516c830b] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a9f159d6-f6e1-48e8-ac32-ab94516c830b]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a9f159d6-f6e1-48e8-ac32-ab94516c830b]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a9f159d6-f6e1-48e8-ac32-ab94516c830b]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a9f159d6-f6e1-48e8-ac32-ab94516c830b] Performed ActiveStorage::AnalyzeJob (Job ID: a9f159d6-f6e1-48e8-ac32-ab94516c830b) from Inline(active_storage_analysis) in 421.6ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a9f159d6-f6e1-48e8-ac32-ab94516c830b) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd875627050 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/4>>
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "ardfc0rqzzl1dnbjskgoi203ws88"], ["filename", "sociable14.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 11165], ["checksum", "leSF7gm5cvYhpsUnt97SNw=="], ["created_at", "2021-08-02 21:39:15.561293"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 1], ["blob_id", 5], ["created_at", "2021-08-02 21:39:15.566336"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:15.568289"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (787.2ms) [0m[32mUploaded file to key: ardfc0rqzzl1dnbjskgoi203ws88 (checksum: leSF7gm5cvYhpsUnt97SNw==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5dd80dbd-1fd7-4ed5-997c-4b455082c476] Performing ActiveStorage::AnalyzeJob (Job ID: 5dd80dbd-1fd7-4ed5-997c-4b455082c476) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:16Z with arguments: #<GlobalID:0x00007fd87571a9a8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5dd80dbd-1fd7-4ed5-997c-4b455082c476] [36m  Cloudinary Storage (401.3ms) [0m[34mDownloaded file from key: ardfc0rqzzl1dnbjskgoi203ws88[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5dd80dbd-1fd7-4ed5-997c-4b455082c476] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5dd80dbd-1fd7-4ed5-997c-4b455082c476]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5dd80dbd-1fd7-4ed5-997c-4b455082c476]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5dd80dbd-1fd7-4ed5-997c-4b455082c476]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5dd80dbd-1fd7-4ed5-997c-4b455082c476] Performed ActiveStorage::AnalyzeJob (Job ID: 5dd80dbd-1fd7-4ed5-997c-4b455082c476) from Inline(active_storage_analysis) in 418.17ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 5dd80dbd-1fd7-4ed5-997c-4b455082c476) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd875771e10 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/5>>
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "vql9zsgc8kj7mz3jjqjutwj88p9n"], ["filename", "space20.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 48173], ["checksum", "Wok6PIkJI4UndYXVvSzHPA=="], ["created_at", "2021-08-02 21:39:16.793998"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 2], ["blob_id", 6], ["created_at", "2021-08-02 21:39:16.800121"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:16.804433"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (981.7ms) [0m[32mUploaded file to key: vql9zsgc8kj7mz3jjqjutwj88p9n (checksum: Wok6PIkJI4UndYXVvSzHPA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b245050-75ac-444d-9a3c-06d0b49c7b68] Performing ActiveStorage::AnalyzeJob (Job ID: 4b245050-75ac-444d-9a3c-06d0b49c7b68) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:17Z with arguments: #<GlobalID:0x00007fd875575f30 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b245050-75ac-444d-9a3c-06d0b49c7b68] [36m  Cloudinary Storage (477.0ms) [0m[34mDownloaded file from key: vql9zsgc8kj7mz3jjqjutwj88p9n[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b245050-75ac-444d-9a3c-06d0b49c7b68] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b245050-75ac-444d-9a3c-06d0b49c7b68]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b245050-75ac-444d-9a3c-06d0b49c7b68]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b245050-75ac-444d-9a3c-06d0b49c7b68]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4b245050-75ac-444d-9a3c-06d0b49c7b68] Performed ActiveStorage::AnalyzeJob (Job ID: 4b245050-75ac-444d-9a3c-06d0b49c7b68) from Inline(active_storage_analysis) in 504.69ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 4b245050-75ac-444d-9a3c-06d0b49c7b68) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd87566df50 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/6>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "omkpj8kwldchonrdwz97u1un1j8k"], ["filename", "space21.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 8455], ["checksum", "QCPHsfBok6/L8wnAJgwHmg=="], ["created_at", "2021-08-02 21:39:18.314967"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 2], ["blob_id", 7], ["created_at", "2021-08-02 21:39:18.323808"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:18.326754"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (892.2ms) [0m[32mUploaded file to key: omkpj8kwldchonrdwz97u1un1j8k (checksum: QCPHsfBok6/L8wnAJgwHmg==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8969e128-778d-4087-a47c-82876d2d0131] Performing ActiveStorage::AnalyzeJob (Job ID: 8969e128-778d-4087-a47c-82876d2d0131) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:19Z with arguments: #<GlobalID:0x00007fd87c02eed0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8969e128-778d-4087-a47c-82876d2d0131] [36m  Cloudinary Storage (402.1ms) [0m[34mDownloaded file from key: omkpj8kwldchonrdwz97u1un1j8k[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8969e128-778d-4087-a47c-82876d2d0131] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8969e128-778d-4087-a47c-82876d2d0131]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8969e128-778d-4087-a47c-82876d2d0131]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8969e128-778d-4087-a47c-82876d2d0131]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8969e128-778d-4087-a47c-82876d2d0131] Performed ActiveStorage::AnalyzeJob (Job ID: 8969e128-778d-4087-a47c-82876d2d0131) from Inline(active_storage_analysis) in 423.35ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 8969e128-778d-4087-a47c-82876d2d0131) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8727b78c8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/7>>
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "sm9kv3sbpcc9zh8omtfl0lqm3blo"], ["filename", "space22.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 224355], ["checksum", "jcIVXjssQ0JVucaxDGttvg=="], ["created_at", "2021-08-02 21:39:19.661594"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 2], ["blob_id", 8], ["created_at", "2021-08-02 21:39:19.697946"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:19.699867"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1672.5ms) [0m[32mUploaded file to key: sm9kv3sbpcc9zh8omtfl0lqm3blo (checksum: jcIVXjssQ0JVucaxDGttvg==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [04cdaeff-5fcd-4ac1-9669-943473a1eebc] Performing ActiveStorage::AnalyzeJob (Job ID: 04cdaeff-5fcd-4ac1-9669-943473a1eebc) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:21Z with arguments: #<GlobalID:0x00007fd871ac7500 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/8>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [04cdaeff-5fcd-4ac1-9669-943473a1eebc] [36m  Cloudinary Storage (732.0ms) [0m[34mDownloaded file from key: sm9kv3sbpcc9zh8omtfl0lqm3blo[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [04cdaeff-5fcd-4ac1-9669-943473a1eebc] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [04cdaeff-5fcd-4ac1-9669-943473a1eebc]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [04cdaeff-5fcd-4ac1-9669-943473a1eebc]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 8]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [04cdaeff-5fcd-4ac1-9669-943473a1eebc]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [04cdaeff-5fcd-4ac1-9669-943473a1eebc] Performed ActiveStorage::AnalyzeJob (Job ID: 04cdaeff-5fcd-4ac1-9669-943473a1eebc) from Inline(active_storage_analysis) in 744.41ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 04cdaeff-5fcd-4ac1-9669-943473a1eebc) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd871d3ff30 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/8>>
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "zgm7566po7sgpg0u7cqrw1u8h11w"], ["filename", "space23.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 18614], ["checksum", "oJ7t5KZo/Z2d1mrUjWTrmw=="], ["created_at", "2021-08-02 21:39:22.130332"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 2], ["blob_id", 9], ["created_at", "2021-08-02 21:39:22.137734"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:22.139894"], ["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (871.5ms) [0m[32mUploaded file to key: zgm7566po7sgpg0u7cqrw1u8h11w (checksum: oJ7t5KZo/Z2d1mrUjWTrmw==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3812a4a0-a313-4106-ba2b-a3ceae6a9cd9] Performing ActiveStorage::AnalyzeJob (Job ID: 3812a4a0-a313-4106-ba2b-a3ceae6a9cd9) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:23Z with arguments: #<GlobalID:0x00007fd875587bb8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/9>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3812a4a0-a313-4106-ba2b-a3ceae6a9cd9] [36m  Cloudinary Storage (609.2ms) [0m[34mDownloaded file from key: zgm7566po7sgpg0u7cqrw1u8h11w[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3812a4a0-a313-4106-ba2b-a3ceae6a9cd9] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3812a4a0-a313-4106-ba2b-a3ceae6a9cd9]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3812a4a0-a313-4106-ba2b-a3ceae6a9cd9]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 9]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3812a4a0-a313-4106-ba2b-a3ceae6a9cd9]   [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3812a4a0-a313-4106-ba2b-a3ceae6a9cd9] Performed ActiveStorage::AnalyzeJob (Job ID: 3812a4a0-a313-4106-ba2b-a3ceae6a9cd9) from Inline(active_storage_analysis) in 628.32ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3812a4a0-a313-4106-ba2b-a3ceae6a9cd9) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8726fa368 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/9>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "a8d1xgxnpobtp9zb8x62v8v7msg2"], ["filename", "space24.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 56329], ["checksum", "BbilTqIFs2g2POfiMXkyqw=="], ["created_at", "2021-08-02 21:39:23.654965"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 2], ["blob_id", 10], ["created_at", "2021-08-02 21:39:23.660073"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:23.661694"], ["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (988.2ms) [0m[32mUploaded file to key: a8d1xgxnpobtp9zb8x62v8v7msg2 (checksum: BbilTqIFs2g2POfiMXkyqw==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a73d7751-ec47-4f44-bcf9-d65031746bbf] Performing ActiveStorage::AnalyzeJob (Job ID: a73d7751-ec47-4f44-bcf9-d65031746bbf) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:24Z with arguments: #<GlobalID:0x00007fd8756812d0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/10>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a73d7751-ec47-4f44-bcf9-d65031746bbf] [36m  Cloudinary Storage (316.4ms) [0m[34mDownloaded file from key: a8d1xgxnpobtp9zb8x62v8v7msg2[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a73d7751-ec47-4f44-bcf9-d65031746bbf] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a73d7751-ec47-4f44-bcf9-d65031746bbf]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a73d7751-ec47-4f44-bcf9-d65031746bbf]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 10]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a73d7751-ec47-4f44-bcf9-d65031746bbf]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a73d7751-ec47-4f44-bcf9-d65031746bbf] Performed ActiveStorage::AnalyzeJob (Job ID: a73d7751-ec47-4f44-bcf9-d65031746bbf) from Inline(active_storage_analysis) in 333.98ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a73d7751-ec47-4f44-bcf9-d65031746bbf) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8716e3e20 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/10>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "yxu3rws9hp924hfhlvgrl89igwti"], ["filename", "fight30.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 65778], ["checksum", "wH+b8seosBWzbKuumre6WA=="], ["created_at", "2021-08-02 21:39:25.001828"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 3], ["blob_id", 11], ["created_at", "2021-08-02 21:39:25.005089"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:25.006669"], ["id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1177.0ms) [0m[32mUploaded file to key: yxu3rws9hp924hfhlvgrl89igwti (checksum: wH+b8seosBWzbKuumre6WA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c] Performing ActiveStorage::AnalyzeJob (Job ID: 0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:26Z with arguments: #<GlobalID:0x00007fd8756f9550 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/11>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c] [36m  Cloudinary Storage (347.1ms) [0m[34mDownloaded file from key: yxu3rws9hp924hfhlvgrl89igwti[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 11]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c] Performed ActiveStorage::AnalyzeJob (Job ID: 0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c) from Inline(active_storage_analysis) in 365.89ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0f124cd8-f62c-4e5f-a32e-7a9bfb34e71c) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd87575a648 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/11>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "7srq9pkm39ro62dumw354m96sk14"], ["filename", "fight31.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 11461], ["checksum", "Ge+xLHHWC230yH6GjjJbLQ=="], ["created_at", "2021-08-02 21:39:26.565916"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 3], ["blob_id", 12], ["created_at", "2021-08-02 21:39:26.571954"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:26.573527"], ["id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (708.5ms) [0m[32mUploaded file to key: 7srq9pkm39ro62dumw354m96sk14 (checksum: Ge+xLHHWC230yH6GjjJbLQ==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0cfd34e1-0164-4ec8-ab46-2b6b036675a5] Performing ActiveStorage::AnalyzeJob (Job ID: 0cfd34e1-0164-4ec8-ab46-2b6b036675a5) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:27Z with arguments: #<GlobalID:0x00007fd8727ece60 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/12>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0cfd34e1-0164-4ec8-ab46-2b6b036675a5] [36m  Cloudinary Storage (637.6ms) [0m[34mDownloaded file from key: 7srq9pkm39ro62dumw354m96sk14[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0cfd34e1-0164-4ec8-ab46-2b6b036675a5] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0cfd34e1-0164-4ec8-ab46-2b6b036675a5]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0cfd34e1-0164-4ec8-ab46-2b6b036675a5]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 12]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0cfd34e1-0164-4ec8-ab46-2b6b036675a5]   [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0cfd34e1-0164-4ec8-ab46-2b6b036675a5] Performed ActiveStorage::AnalyzeJob (Job ID: 0cfd34e1-0164-4ec8-ab46-2b6b036675a5) from Inline(active_storage_analysis) in 662.32ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0cfd34e1-0164-4ec8-ab46-2b6b036675a5) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd87141b5f8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/12>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "fmah4tilhu201irluk15bwgtbn1i"], ["filename", "fight32.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 9351], ["checksum", "CHEVlMz+jiuZ8KXCJ/6ong=="], ["created_at", "2021-08-02 21:39:27.959493"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 3], ["blob_id", 13], ["created_at", "2021-08-02 21:39:27.964393"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:27.966217"], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (779.1ms) [0m[32mUploaded file to key: fmah4tilhu201irluk15bwgtbn1i (checksum: CHEVlMz+jiuZ8KXCJ/6ong==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a01aaa91-1cad-49b3-881f-3e1b3f1449f1] Performing ActiveStorage::AnalyzeJob (Job ID: a01aaa91-1cad-49b3-881f-3e1b3f1449f1) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:28Z with arguments: #<GlobalID:0x00007fd871ef6130 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/13>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a01aaa91-1cad-49b3-881f-3e1b3f1449f1] [36m  Cloudinary Storage (298.4ms) [0m[34mDownloaded file from key: fmah4tilhu201irluk15bwgtbn1i[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a01aaa91-1cad-49b3-881f-3e1b3f1449f1] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a01aaa91-1cad-49b3-881f-3e1b3f1449f1]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a01aaa91-1cad-49b3-881f-3e1b3f1449f1]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 13]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a01aaa91-1cad-49b3-881f-3e1b3f1449f1]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a01aaa91-1cad-49b3-881f-3e1b3f1449f1] Performed ActiveStorage::AnalyzeJob (Job ID: a01aaa91-1cad-49b3-881f-3e1b3f1449f1) from Inline(active_storage_analysis) in 312.27ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a01aaa91-1cad-49b3-881f-3e1b3f1449f1) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd87155ede8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/13>>
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "tqir30jbmfcdyli4vm2m7owa486f"], ["filename", "fight33.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 103099], ["checksum", "8gm927sjOEH9XWQm5oAZhg=="], ["created_at", "2021-08-02 21:39:29.071097"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 3], ["blob_id", 14], ["created_at", "2021-08-02 21:39:29.075586"]]
+  [1m[36mGoatAd Update (0.4ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:29.077993"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1202.5ms) [0m[32mUploaded file to key: tqir30jbmfcdyli4vm2m7owa486f (checksum: 8gm927sjOEH9XWQm5oAZhg==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ecee0129-574f-4182-a3dd-43c5ca5f3598] Performing ActiveStorage::AnalyzeJob (Job ID: ecee0129-574f-4182-a3dd-43c5ca5f3598) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:30Z with arguments: #<GlobalID:0x00007fd875633058 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/14>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ecee0129-574f-4182-a3dd-43c5ca5f3598] [36m  Cloudinary Storage (324.8ms) [0m[34mDownloaded file from key: tqir30jbmfcdyli4vm2m7owa486f[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ecee0129-574f-4182-a3dd-43c5ca5f3598] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ecee0129-574f-4182-a3dd-43c5ca5f3598]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ecee0129-574f-4182-a3dd-43c5ca5f3598]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 14]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ecee0129-574f-4182-a3dd-43c5ca5f3598]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ecee0129-574f-4182-a3dd-43c5ca5f3598] Performed ActiveStorage::AnalyzeJob (Job ID: ecee0129-574f-4182-a3dd-43c5ca5f3598) from Inline(active_storage_analysis) in 341.41ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: ecee0129-574f-4182-a3dd-43c5ca5f3598) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd875625890 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/14>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "r21njn0yf1ikq8v6l06t1862j47q"], ["filename", "fight34.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 31249], ["checksum", "DajjtlWp0m0UioJIfTsqww=="], ["created_at", "2021-08-02 21:39:30.635950"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 3], ["blob_id", 15], ["created_at", "2021-08-02 21:39:30.641040"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:30.642955"], ["id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (815.7ms) [0m[32mUploaded file to key: r21njn0yf1ikq8v6l06t1862j47q (checksum: DajjtlWp0m0UioJIfTsqww==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [65c1431b-55ac-4a01-8c21-babac01c96ec] Performing ActiveStorage::AnalyzeJob (Job ID: 65c1431b-55ac-4a01-8c21-babac01c96ec) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:31Z with arguments: #<GlobalID:0x00007fd871753dd8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/15>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [65c1431b-55ac-4a01-8c21-babac01c96ec] [36m  Cloudinary Storage (452.6ms) [0m[34mDownloaded file from key: r21njn0yf1ikq8v6l06t1862j47q[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [65c1431b-55ac-4a01-8c21-babac01c96ec] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [65c1431b-55ac-4a01-8c21-babac01c96ec]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [65c1431b-55ac-4a01-8c21-babac01c96ec]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 15]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [65c1431b-55ac-4a01-8c21-babac01c96ec]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [65c1431b-55ac-4a01-8c21-babac01c96ec] Performed ActiveStorage::AnalyzeJob (Job ID: 65c1431b-55ac-4a01-8c21-babac01c96ec) from Inline(active_storage_analysis) in 477.41ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 65c1431b-55ac-4a01-8c21-babac01c96ec) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd87c03e308 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/15>>
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "wnysn44dwce33spjhojkpk810a9r"], ["filename", "milk40.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 77845], ["checksum", "ToXMa5V5BpFmOtR6flf8aw=="], ["created_at", "2021-08-02 21:39:31.953884"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 4], ["blob_id", 16], ["created_at", "2021-08-02 21:39:31.957391"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:31.958940"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (983.7ms) [0m[32mUploaded file to key: wnysn44dwce33spjhojkpk810a9r (checksum: ToXMa5V5BpFmOtR6flf8aw==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e833737d-4d29-4f0b-a228-66d5c121e937] Performing ActiveStorage::AnalyzeJob (Job ID: e833737d-4d29-4f0b-a228-66d5c121e937) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:32Z with arguments: #<GlobalID:0x00007fd87c817250 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/16>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e833737d-4d29-4f0b-a228-66d5c121e937] [36m  Cloudinary Storage (424.8ms) [0m[34mDownloaded file from key: wnysn44dwce33spjhojkpk810a9r[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e833737d-4d29-4f0b-a228-66d5c121e937] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e833737d-4d29-4f0b-a228-66d5c121e937]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e833737d-4d29-4f0b-a228-66d5c121e937]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 16]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e833737d-4d29-4f0b-a228-66d5c121e937]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e833737d-4d29-4f0b-a228-66d5c121e937] Performed ActiveStorage::AnalyzeJob (Job ID: e833737d-4d29-4f0b-a228-66d5c121e937) from Inline(active_storage_analysis) in 442.59ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e833737d-4d29-4f0b-a228-66d5c121e937) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8727f4f70 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/16>>
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "qoo0vn2p9li2fkw7scxh5yoj3qlg"], ["filename", "milk41.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 28941], ["checksum", "fe/qZYfNbZoNQxuG6xfo9w=="], ["created_at", "2021-08-02 21:39:33.420713"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 4], ["blob_id", 17], ["created_at", "2021-08-02 21:39:33.425097"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:33.426723"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (831.1ms) [0m[32mUploaded file to key: qoo0vn2p9li2fkw7scxh5yoj3qlg (checksum: fe/qZYfNbZoNQxuG6xfo9w==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b44cb4b4-9787-4a16-8f68-ebc1c555848c] Performing ActiveStorage::AnalyzeJob (Job ID: b44cb4b4-9787-4a16-8f68-ebc1c555848c) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:34Z with arguments: #<GlobalID:0x00007fd871c15a38 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/17>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b44cb4b4-9787-4a16-8f68-ebc1c555848c] [36m  Cloudinary Storage (420.4ms) [0m[34mDownloaded file from key: qoo0vn2p9li2fkw7scxh5yoj3qlg[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b44cb4b4-9787-4a16-8f68-ebc1c555848c] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b44cb4b4-9787-4a16-8f68-ebc1c555848c]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b44cb4b4-9787-4a16-8f68-ebc1c555848c]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 17]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b44cb4b4-9787-4a16-8f68-ebc1c555848c]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b44cb4b4-9787-4a16-8f68-ebc1c555848c] Performed ActiveStorage::AnalyzeJob (Job ID: b44cb4b4-9787-4a16-8f68-ebc1c555848c) from Inline(active_storage_analysis) in 442.53ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: b44cb4b4-9787-4a16-8f68-ebc1c555848c) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd871f25a98 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/17>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "6tw7e1fvivivtlm84jxje6d4o4vt"], ["filename", "milk42.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 50231], ["checksum", "oEnckjBvmnc7hCcI8lKflA=="], ["created_at", "2021-08-02 21:39:34.714925"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 4], ["blob_id", 18], ["created_at", "2021-08-02 21:39:34.720279"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:34.721952"], ["id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1050.6ms) [0m[32mUploaded file to key: 6tw7e1fvivivtlm84jxje6d4o4vt (checksum: oEnckjBvmnc7hCcI8lKflA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [517881c1-d2d9-499e-95bf-ae9768d6746b] Performing ActiveStorage::AnalyzeJob (Job ID: 517881c1-d2d9-499e-95bf-ae9768d6746b) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:35Z with arguments: #<GlobalID:0x00007fd8726c6f18 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/18>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [517881c1-d2d9-499e-95bf-ae9768d6746b] [36m  Cloudinary Storage (287.2ms) [0m[34mDownloaded file from key: 6tw7e1fvivivtlm84jxje6d4o4vt[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [517881c1-d2d9-499e-95bf-ae9768d6746b] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [517881c1-d2d9-499e-95bf-ae9768d6746b]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [517881c1-d2d9-499e-95bf-ae9768d6746b]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 18]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [517881c1-d2d9-499e-95bf-ae9768d6746b]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [517881c1-d2d9-499e-95bf-ae9768d6746b] Performed ActiveStorage::AnalyzeJob (Job ID: 517881c1-d2d9-499e-95bf-ae9768d6746b) from Inline(active_storage_analysis) in 304.32ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 517881c1-d2d9-499e-95bf-ae9768d6746b) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd875669518 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/18>>
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "a8zo74qyi9z6lt1uh66jeg8z9uta"], ["filename", "milk43.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 53703], ["checksum", "jzw5/FrhEvnslrohsxsLFw=="], ["created_at", "2021-08-02 21:39:36.090816"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 4], ["blob_id", 19], ["created_at", "2021-08-02 21:39:36.095618"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:36.097250"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (942.1ms) [0m[32mUploaded file to key: a8zo74qyi9z6lt1uh66jeg8z9uta (checksum: jzw5/FrhEvnslrohsxsLFw==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a99be025-73f4-493c-a55a-6b00b965971d] Performing ActiveStorage::AnalyzeJob (Job ID: a99be025-73f4-493c-a55a-6b00b965971d) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:37Z with arguments: #<GlobalID:0x00007fd8716aa940 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/19>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a99be025-73f4-493c-a55a-6b00b965971d] [36m  Cloudinary Storage (357.1ms) [0m[34mDownloaded file from key: a8zo74qyi9z6lt1uh66jeg8z9uta[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a99be025-73f4-493c-a55a-6b00b965971d] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a99be025-73f4-493c-a55a-6b00b965971d]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a99be025-73f4-493c-a55a-6b00b965971d]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 19]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a99be025-73f4-493c-a55a-6b00b965971d]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a99be025-73f4-493c-a55a-6b00b965971d] Performed ActiveStorage::AnalyzeJob (Job ID: a99be025-73f4-493c-a55a-6b00b965971d) from Inline(active_storage_analysis) in 375.31ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a99be025-73f4-493c-a55a-6b00b965971d) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd871761910 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/19>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "levbg871d4krxhaxu4ogira49veh"], ["filename", "milk44.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 10742], ["checksum", "48cXzyxmsXBANb00VHjLtg=="], ["created_at", "2021-08-02 21:39:37.429608"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 4], ["blob_id", 20], ["created_at", "2021-08-02 21:39:37.434439"]]
+  [1m[36mGoatAd Update (0.5ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:37.436158"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (912.7ms) [0m[32mUploaded file to key: levbg871d4krxhaxu4ogira49veh (checksum: 48cXzyxmsXBANb00VHjLtg==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f030a0cf-6e80-436c-b2f1-4aa3a07b9791] Performing ActiveStorage::AnalyzeJob (Job ID: f030a0cf-6e80-436c-b2f1-4aa3a07b9791) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:38Z with arguments: #<GlobalID:0x00007fd87c04c9a8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/20>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f030a0cf-6e80-436c-b2f1-4aa3a07b9791] [36m  Cloudinary Storage (295.3ms) [0m[34mDownloaded file from key: levbg871d4krxhaxu4ogira49veh[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f030a0cf-6e80-436c-b2f1-4aa3a07b9791] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f030a0cf-6e80-436c-b2f1-4aa3a07b9791]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f030a0cf-6e80-436c-b2f1-4aa3a07b9791]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 20]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f030a0cf-6e80-436c-b2f1-4aa3a07b9791]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f030a0cf-6e80-436c-b2f1-4aa3a07b9791] Performed ActiveStorage::AnalyzeJob (Job ID: f030a0cf-6e80-436c-b2f1-4aa3a07b9791) from Inline(active_storage_analysis) in 312.02ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f030a0cf-6e80-436c-b2f1-4aa3a07b9791) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8727bead8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/20>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "a973ejy5ianioy7g11jrj4bk79fs"], ["filename", "mow50.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 9068], ["checksum", "JuQo4MIbcK5/qg5w1mQVhg=="], ["created_at", "2021-08-02 21:39:38.681569"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 5], ["blob_id", 21], ["created_at", "2021-08-02 21:39:38.685408"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:38.687143"], ["id", 5]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (791.7ms) [0m[32mUploaded file to key: a973ejy5ianioy7g11jrj4bk79fs (checksum: JuQo4MIbcK5/qg5w1mQVhg==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b460600-09e1-4ea1-81e2-4001dd4e5d80] Performing ActiveStorage::AnalyzeJob (Job ID: 3b460600-09e1-4ea1-81e2-4001dd4e5d80) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:39Z with arguments: #<GlobalID:0x00007fd8724d2388 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/21>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b460600-09e1-4ea1-81e2-4001dd4e5d80] [36m  Cloudinary Storage (300.0ms) [0m[34mDownloaded file from key: a973ejy5ianioy7g11jrj4bk79fs[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b460600-09e1-4ea1-81e2-4001dd4e5d80] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b460600-09e1-4ea1-81e2-4001dd4e5d80]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b460600-09e1-4ea1-81e2-4001dd4e5d80]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 21]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b460600-09e1-4ea1-81e2-4001dd4e5d80]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b460600-09e1-4ea1-81e2-4001dd4e5d80] Performed ActiveStorage::AnalyzeJob (Job ID: 3b460600-09e1-4ea1-81e2-4001dd4e5d80) from Inline(active_storage_analysis) in 316.52ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3b460600-09e1-4ea1-81e2-4001dd4e5d80) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd871bde330 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/21>>
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "rcjmmf2ll0sc20xv0fq1catvle89"], ["filename", "mow51.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 205181], ["checksum", "3OCnXiVTHgBBQLwa80a2ig=="], ["created_at", "2021-08-02 21:39:39.827305"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 5], ["blob_id", 22], ["created_at", "2021-08-02 21:39:39.831885"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:39.833524"], ["id", 5]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1301.4ms) [0m[32mUploaded file to key: rcjmmf2ll0sc20xv0fq1catvle89 (checksum: 3OCnXiVTHgBBQLwa80a2ig==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbaae133-b4ea-4a41-a60a-042196ba772c] Performing ActiveStorage::AnalyzeJob (Job ID: bbaae133-b4ea-4a41-a60a-042196ba772c) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:41Z with arguments: #<GlobalID:0x00007fd872676ec8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/22>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbaae133-b4ea-4a41-a60a-042196ba772c] [36m  Cloudinary Storage (341.9ms) [0m[34mDownloaded file from key: rcjmmf2ll0sc20xv0fq1catvle89[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbaae133-b4ea-4a41-a60a-042196ba772c] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbaae133-b4ea-4a41-a60a-042196ba772c]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbaae133-b4ea-4a41-a60a-042196ba772c]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 22]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbaae133-b4ea-4a41-a60a-042196ba772c]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbaae133-b4ea-4a41-a60a-042196ba772c] Performed ActiveStorage::AnalyzeJob (Job ID: bbaae133-b4ea-4a41-a60a-042196ba772c) from Inline(active_storage_analysis) in 361.63ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: bbaae133-b4ea-4a41-a60a-042196ba772c) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8715ca368 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/22>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "az7bq07nroudyp9vmm77ytnkg1so"], ["filename", "mow52.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 12383], ["checksum", "ie+1uir1etffccvZ96jNtA=="], ["created_at", "2021-08-02 21:39:41.514099"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 5], ["blob_id", 23], ["created_at", "2021-08-02 21:39:41.520635"]]
+  [1m[36mGoatAd Update (0.3ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:41.522359"], ["id", 5]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (841.1ms) [0m[32mUploaded file to key: az7bq07nroudyp9vmm77ytnkg1so (checksum: ie+1uir1etffccvZ96jNtA==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e72ff495-f2d7-4943-a11e-572be018e858] Performing ActiveStorage::AnalyzeJob (Job ID: e72ff495-f2d7-4943-a11e-572be018e858) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:42Z with arguments: #<GlobalID:0x00007fd87554fad8 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/23>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e72ff495-f2d7-4943-a11e-572be018e858] [36m  Cloudinary Storage (408.2ms) [0m[34mDownloaded file from key: az7bq07nroudyp9vmm77ytnkg1so[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e72ff495-f2d7-4943-a11e-572be018e858] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e72ff495-f2d7-4943-a11e-572be018e858]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e72ff495-f2d7-4943-a11e-572be018e858]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 23]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e72ff495-f2d7-4943-a11e-572be018e858]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e72ff495-f2d7-4943-a11e-572be018e858] Performed ActiveStorage::AnalyzeJob (Job ID: e72ff495-f2d7-4943-a11e-572be018e858) from Inline(active_storage_analysis) in 426.12ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e72ff495-f2d7-4943-a11e-572be018e858) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8716a3938 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/23>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "5qvyfdttv2q7x21d1gbszr30qh5f"], ["filename", "mow53.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 12104], ["checksum", "nILeJMedSam306DrVC13CQ=="], ["created_at", "2021-08-02 21:39:42.804467"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 5], ["blob_id", 24], ["created_at", "2021-08-02 21:39:42.809660"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:42.811245"], ["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (884.5ms) [0m[32mUploaded file to key: 5qvyfdttv2q7x21d1gbszr30qh5f (checksum: nILeJMedSam306DrVC13CQ==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a5572da6-6bd4-4be6-801d-16e947c1cb2b] Performing ActiveStorage::AnalyzeJob (Job ID: a5572da6-6bd4-4be6-801d-16e947c1cb2b) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:43Z with arguments: #<GlobalID:0x00007fd871fcd2c0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/24>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a5572da6-6bd4-4be6-801d-16e947c1cb2b] [36m  Cloudinary Storage (337.1ms) [0m[34mDownloaded file from key: 5qvyfdttv2q7x21d1gbszr30qh5f[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a5572da6-6bd4-4be6-801d-16e947c1cb2b] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a5572da6-6bd4-4be6-801d-16e947c1cb2b]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a5572da6-6bd4-4be6-801d-16e947c1cb2b]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 24]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a5572da6-6bd4-4be6-801d-16e947c1cb2b]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a5572da6-6bd4-4be6-801d-16e947c1cb2b] Performed ActiveStorage::AnalyzeJob (Job ID: a5572da6-6bd4-4be6-801d-16e947c1cb2b) from Inline(active_storage_analysis) in 353.23ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a5572da6-6bd4-4be6-801d-16e947c1cb2b) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd87572be88 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/24>>
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "09bh6y1h886lmxw9vat4z4avuw7r"], ["filename", "mow54.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 5419], ["checksum", "g7u+lUWsntxSZsRRpiWbrw=="], ["created_at", "2021-08-02 21:39:44.062895"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medias"], ["record_type", "GoatAd"], ["record_id", 5], ["blob_id", 25], ["created_at", "2021-08-02 21:39:44.067881"]]
+  [1m[36mGoatAd Update (0.2ms)[0m  [1m[33mUPDATE "goat_ads" SET "updated_at" = $1 WHERE "goat_ads"."id" = $2[0m  [["updated_at", "2021-08-02 21:39:44.069637"], ["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (752.2ms) [0m[32mUploaded file to key: 09bh6y1h886lmxw9vat4z4avuw7r (checksum: g7u+lUWsntxSZsRRpiWbrw==)[0m
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ea6d25c3-b582-4fcf-85a3-05013ec943a6] Performing ActiveStorage::AnalyzeJob (Job ID: ea6d25c3-b582-4fcf-85a3-05013ec943a6) from Inline(active_storage_analysis) enqueued at 2021-08-02T21:39:44Z with arguments: #<GlobalID:0x00007fd87577b398 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/25>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ea6d25c3-b582-4fcf-85a3-05013ec943a6] [36m  Cloudinary Storage (710.1ms) [0m[34mDownloaded file from key: 09bh6y1h886lmxw9vat4z4avuw7r[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ea6d25c3-b582-4fcf-85a3-05013ec943a6] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ea6d25c3-b582-4fcf-85a3-05013ec943a6]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ea6d25c3-b582-4fcf-85a3-05013ec943a6]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 25]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ea6d25c3-b582-4fcf-85a3-05013ec943a6]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ea6d25c3-b582-4fcf-85a3-05013ec943a6] Performed ActiveStorage::AnalyzeJob (Job ID: ea6d25c3-b582-4fcf-85a3-05013ec943a6) from Inline(active_storage_analysis) in 751.06ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: ea6d25c3-b582-4fcf-85a3-05013ec943a6) to Inline(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8724a35b0 @uri=#<URI::GID gid://bouc-ing/ActiveStorage::Blob/25>>
+Started GET "/" for ::1 at 2021-08-03 00:01:07 +0200
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mGoatAd Load (1.7ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  ↳ app/views/pages/home.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (6.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (1.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  Rendered pages/home.html.erb within layouts/application (Duration: 152.0ms | Allocations: 44533)
+  Rendered shared/_navbar.html.erb (Duration: 8.2ms | Allocations: 688)
+  Rendered shared/_flashes.html.erb (Duration: 1.7ms | Allocations: 184)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 5.0ms | Allocations: 100)
+Completed 200 OK in 632ms (Views: 575.1ms | ActiveRecord: 21.6ms | Allocations: 102060)
+
+
+Started GET "/" for ::1 at 2021-08-03 00:01:08 +0200
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mGoatAd Load (0.3ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  ↳ app/views/pages/home.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  Rendered pages/home.html.erb within layouts/application (Duration: 23.1ms | Allocations: 12423)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 192)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 23)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 40ms (Views: 36.9ms | ActiveRecord: 2.6ms | Allocations: 24775)
+
+
+Started GET "/" for ::1 at 2021-08-03 00:15:30 +0200
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mGoatAd Load (2.6ms)[0m  [1m[34mSELECT "goat_ads".* FROM "goat_ads"[0m
+  ↳ app/views/pages/home.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (1.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 5], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 1], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 2], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 3], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 ORDER BY "active_storage_attachments"."id" ASC LIMIT $4[0m  [["record_id", 4], ["record_type", "GoatAd"], ["name", "medias"], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:45
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:46
+  Rendered pages/home.html.erb within layouts/application (Duration: 42.4ms | Allocations: 12990)
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 631)
+  Rendered shared/_flashes.html.erb (Duration: 1.1ms | Allocations: 176)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_footer.html.erb (Duration: 0.9ms | Allocations: 102)
+Completed 200 OK in 90ms (Views: 80.8ms | ActiveRecord: 6.9ms | Allocations: 27641)
+
+
