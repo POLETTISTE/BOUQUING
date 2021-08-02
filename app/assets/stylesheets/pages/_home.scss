@@ -16,31 +16,6 @@ h1,h3{
 h1{
   font-size: 46px;
 }
-.container-box-4 h1 {
-  padding-top:10px;
-  font-size: 24px;
-}
-
-.container-box-flex h4 {
-  padding-top:10px;
-  font-size: 24px;
-}
-.container-box-flex p {
-  font-size: 15px;
-}
-
-.container-box-flex.booking-card{
-  border-radius: 5px;
-  border: 1px solid black;
-}
-
-
-.container-box-4 p {
-  padding-top:5px;
-  font-size: 12px;
-  font-weight: lighter;
-}
-
 h2{
   font-weight: 400;
   font-size: 20px;
@@ -136,13 +111,6 @@ h3{
   z-index: 3;
 }
 
-.container-box-4{
-  width: 1000px;
-  margin:20px auto;
-  display: block;
-  z-index: 3;
-}
-
 .form {
   margin-top: 50px;
   padding-left: 20px;
@@ -189,11 +157,10 @@ h3{
 }
 
 .card{
+  border-radius: 20px;
   border:0px solid;
   margin: 10px;
-  background: white;
-  height:400px;
-  border-radius:10px;
+  height: 400px;
   box-shadow:
   0 12.5px 10px rgba(0, 0, 0, 0.035),
   0 100px 80px rgba(0, 0, 0, 0.07);
@@ -219,6 +186,21 @@ h3{
   border-radius: 5px;
 }
 
+.goat-header h1 {
+    font-weight: bold;
+    width: 80%;
+}
+.goat-header p {
+    font-weight: lighter;
+    width: 80%;
+}
+.goat-board h3 {
+    font-weight: bold;
+}
+.goat-board p {
+    font-weight: normal;
+    width: auto;
+}
 .gallery {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -232,14 +214,9 @@ h3{
 
 .galleryflex {
   display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-}
+  justify-content: space-around;
+  width:80%;
 
-.container-box-flex{
-  display: flex;
-  justify-content: space-between;
-  width: 1000px;
 }
 
 a.text-decoration-none {
@@ -284,13 +261,7 @@ hr.solid {
   display: flex;
 }
 
-
-.fas .fa-birthday-cake, .far .fa-dot-circle{
-  margin-right:20px;
-}
-
 .bookings-container-box h1 {
   text-align: center;
 }
-
 

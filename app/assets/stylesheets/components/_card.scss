@@ -1,12 +1,12 @@
 .card {
   background-size: cover;
   background-position: center;
-  height: 200px;
+  height: 300px;
   // width: 40%;
   // border-radius: 10px;
   margin: 10px;
   display: flex;
-  text-align:center;
+  align-items: center;
   text-transform: capitalize;
 }
 
@@ -23,6 +23,7 @@
 .content {
   min-height: 100vh;
   h1 {
+    margin-left: 40px;
     color: #343A40;
   }
 }
@@ -36,7 +37,6 @@
 
 .card-info {
   h3 {
-    font-size: 20px;
     color: #343A40;
   }
   padding-left: 20px;
@@ -45,9 +45,14 @@
     color: #343A40;
     font-size: 12px;
   }
-  span {
+  h6 {
     color: #27A351;
   }
+}
+
+.card-body {
+  text-align: center;
+
 }
 
 #map{
@@ -58,17 +63,11 @@
   display: flex;
 }
 
-.content{
-  padding-left: 100px;
-}
-
 
 .card-category a{
   color: white;
-  font-size: 10px;
-  text-align:center;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px #3b4855;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px #343A40;
 
 }
 

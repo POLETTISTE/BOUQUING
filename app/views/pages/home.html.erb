@@ -4,20 +4,10 @@
   <h1>Get your goat </h1>
   <h2>      & got your guest</h2>
     <div class="form">
-              <%= form_tag goat_ads_path, method: :get,
-                class: "formsearch" do %>
-              <%= text_field_tag :query,
-                params[:query],
-                class: "search_bar",
-                placeholder: "Find a goat"
-              %>
-            </li>
-             <%= submit_tag "Search", class: "btn btn-dark" %>
-            <% end %>
     </div>
   </div>
   <div class="container-box2">
-  <img src="https://lh3.googleusercontent.com/proxy/_ACMiypmng0KOfLJCX4DihkWtz5-qc6PXcCoC4iyEXOBb5ZUN2GQyRHFcWbQ_4v45WLbKEd2A9inBs1T80aePJSQShSUDh3_9maMw8WrNH5jBw" alt="">
+  <img src="https://lh3.googleusercontent.com/proxy/dA0sKTrfzKrHumi6FpnWPqB5Xs_AxrdazEcDp-TQQeouh3eW9Lq1V63tVwo9k82YCk6ortVkilvr3xV-OHdBIkQXlKds4sCKZT4R6WsYijpzyoswWJDOoTy6aNGyTP9IqTN9nZE7zlK479-V" alt="">
   </div>
 </div>
 
@@ -26,7 +16,7 @@
 <div class="container-box">
 <h3>Top categories</h3>
 <br>
- <p>Goats are specialized professionnals - Find the one you need !</p>
+ <h6><em>Goats are specialized professionnals - Find the one you need !</em></h6>
 
 <div class="cards1">
      <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1613846043689-afad9cb6317d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80)"> <%= link_to "fighter", goat_ads_path(feature: fighter), class: "text-decoration-none" %></div>
@@ -42,7 +32,7 @@
 <div class="container-box">
 <h3>Goats of the month</h3>
 <br>
-<p>Elected by our customers, the bests of the bests !</p>
+Elected by our customers, the bests of the bests !
 <div class="cards">
 
 <% @goat_ads.each do |goat_ad| %>
@@ -62,7 +52,7 @@
     <div class="card-body">
         <h5 class="card-title"><%= goat_ad.name %></h5>
         <p class="card-text"><%=goat_ad.features%></p>
-        <p class="card-info"><span><%=goat_ad.price_per_day%> €/day</span></p>
+        <p class="card-text"><%=goat_ad.price_per_day%> €</p>
         <%= link_to "Rent now", goat_ad , class: "btn btn-dark" %>
     </div>
 
